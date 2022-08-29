@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="github.kaierwen.android.viewpager2lazy.ui.bottom_navigation_view_fragment.a.AFragment"
+        android:label="@string/title_a"
+        tools:layout="@layout/fragment_a" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="github.kaierwen.android.viewpager2lazy.ui.bottom_navigation_view_fragment.b.BFragment"
+        android:label="@string/title_b"
+        tools:layout="@layout/fragment_b" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="github.kaierwen.android.viewpager2lazy.ui.bottom_navigation_view_fragment.c.CFragment"
+        android:label="@string/title_c"
+        tools:layout="@layout/fragment_c" />
+</navigation>

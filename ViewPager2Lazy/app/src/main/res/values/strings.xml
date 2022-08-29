@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ViewPager2Lazy</string>
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_a">A</string>
+    <string name="title_b">B</string>
+    <string name="title_c">C</string>
+    <string name="title_activity_top_tab">TopTabActivity</string>
+    <string name="tab_text_0">0</string>
+    <string name="tab_text_1">1</string>
+    <string name="tab_text_2">2</string>
+    <string name="tab_text_3">3</string>
+    <string name="tab_text_4">4</string>
+    <string name="tab_text_5">5</string>
+    <string name="tab_text_6">6</string>
+    <string name="tab_text_7">7</string>
+    <string name="title_activity_compose_bottom_navigation_bar">ComposeBottomNavigationBarActivity
+    </string>
+</resources>

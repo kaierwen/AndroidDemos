@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 设置MySlidingTabLayout字体大小 -->
+    <attr name="tl_textSelectSize" format="dimension" />
+    <attr name="tl_textUnselectSize" format="dimension" />
+
+    <declare-styleable name="SlidingTabLayout">
+        <attr name="tl_textSelectSize" />
+        <attr name="tl_textUnselectSize" />
+    </declare-styleable>
+</resources>
