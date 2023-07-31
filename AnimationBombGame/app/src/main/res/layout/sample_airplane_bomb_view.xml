@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <github.kaierwen.android.animationbombgame.AirplaneBombView
+        style="@style/Widget.Theme.AnimationBombGame.MyView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:padding="16dp"
+        app:abv_icon="@mipmap/ic_launcher" />
+
+</FrameLayout>

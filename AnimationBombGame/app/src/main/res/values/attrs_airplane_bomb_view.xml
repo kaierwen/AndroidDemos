@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="AirplaneBombView">
+        <attr name="abv_icon" format="reference" />
+    </declare-styleable>
+</resources>
