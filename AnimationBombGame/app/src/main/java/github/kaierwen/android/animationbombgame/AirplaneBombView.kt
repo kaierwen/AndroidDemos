@@ -1,9 +1,11 @@
 package github.kaierwen.android.animationbombgame
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 
 /**
@@ -12,9 +14,16 @@ import android.view.View
  * @author qiaofeng
  * @since 2023-7-14
  */
-class AirplaneBombView : View {
+open class AirplaneBombView : View {
 
-    var icon: Drawable? = null
+    private val isDebug = true
+    private val TAG = AirplaneBombView::class.java.simpleName
+
+    private var icon: Drawable? = null
+
+    // 小飞机图标动画
+    private var iconAnimator: ValueAnimator? = null
+    private var isAnimatorInit = false
 
     constructor(context: Context) : super(context) {
         init(null, 0)
@@ -33,6 +42,10 @@ class AirplaneBombView : View {
     }
 
     private fun init(attrs: AttributeSet?, defStyle: Int) {
+        if (isDebug) Log.d(
+            TAG,
+            "init: width=$width , height=$height , paddingStart=$paddingStart , paddingTop=$paddingTop , paddingEnd=$paddingEnd , paddingBottom=$paddingBottom"
+        )
         val a = context.obtainStyledAttributes(
             attrs, R.styleable.AirplaneBombView, defStyle, 0
         )
@@ -45,23 +58,65 @@ class AirplaneBombView : View {
         a.recycle()
     }
 
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        if (isDebug) Log.d(
+            TAG,
+            "onLayout: changed=$changed , left=$left , top=$top , right=$right , bottom=$bottom"
+        )
+        setAnimator()
+        iconAnimator?.start()
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        if (isDebug) Log.d(TAG, "onSizeChanged: w=$w , h=$h , oldw=$oldw , oldh=$oldh")
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val paddingLeft = paddingStart
+        val paddingStart = paddingStart
         val paddingTop = paddingTop
-        val paddingRight = paddingEnd
+        val paddingEnd = paddingEnd
         val paddingBottom = paddingBottom
 
-        val contentWidth = width - paddingLeft - paddingRight
+        val contentWidth = width - paddingStart - paddingEnd
         val contentHeight = height - paddingTop - paddingBottom
+        if (isDebug) Log.d(
+            TAG,
+            "onDraw: width=$width , height=$height , paddingStart=$paddingStart , paddingTop=$paddingTop , paddingEnd=$paddingEnd , paddingBottom=$paddingBottom"
+        )
 
+
+//        icon?.let {
+//            it.setBounds(
+//                paddingLeft, paddingTop,
+//                paddingLeft + contentWidth, paddingTop + contentHeight
+//            )
+//            it.draw(canvas)
+//        }
         icon?.let {
             it.setBounds(
-                paddingLeft, paddingTop,
-                paddingLeft + contentWidth, paddingTop + contentHeight
+                paddingStart, paddingTop,
+                200, 200
             )
             it.draw(canvas)
         }
+    }
+
+    private fun setAnimator() {
+        if (isAnimatorInit) return
+        if (isDebug) Log.d(
+            TAG,
+            "setAnimator: width=$width , height=$height"
+        )
+        iconAnimator = ValueAnimator.ofInt(0, width)
+        iconAnimator?.apply {
+            duration = 2000
+            addUpdateListener {
+                val value = it.animatedValue as Int
+                if (isDebug) Log.d(TAG, "setAnimator: animatedValue=$value")
+            }
+        }
+        isAnimatorInit = true
     }
 }

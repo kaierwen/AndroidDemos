@@ -8,6 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:padding="16dp"
-        app:abv_icon="@mipmap/ic_launcher" />
+        app:abv_icon="@drawable/ic_rocket" />
 
 </FrameLayout>
